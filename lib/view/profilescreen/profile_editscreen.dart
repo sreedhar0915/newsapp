@@ -76,6 +76,7 @@ class ProfileEditscreen extends StatelessWidget {
         hintText: "Phone number",
         hintStyle: TextStyle(
             color: Colors.blue, fontSize: 16, fontWeight: FontWeight.normal),
+        labelStyle: TextStyle(color: Colors.blue),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
@@ -109,6 +110,7 @@ class ProfileEditscreen extends StatelessWidget {
         hintText: "Age",
         hintStyle: TextStyle(
             color: Colors.blue, fontSize: 16, fontWeight: FontWeight.normal),
+        labelStyle: TextStyle(color: Colors.blue),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
@@ -142,6 +144,7 @@ class ProfileEditscreen extends StatelessWidget {
         hintText: "Address",
         hintStyle: TextStyle(
             color: Colors.blue, fontSize: 16, fontWeight: FontWeight.normal),
+        labelStyle: TextStyle(color: Colors.blue),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
@@ -173,6 +176,7 @@ class ProfileEditscreen extends StatelessWidget {
         hintText: "Name",
         hintStyle: TextStyle(
             color: Colors.blue, fontSize: 16, fontWeight: FontWeight.normal),
+        labelStyle: TextStyle(color: Colors.blue),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
