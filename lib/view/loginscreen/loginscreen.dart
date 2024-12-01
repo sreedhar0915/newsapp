@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:newsapp/controller/loginscreen_controller.dart';
-import 'package:newsapp/view/Bottomnavibar_screen/bottomnavibar_screen.dart';
+import 'package:newsapp/view/profilescreen/profile_editscreen.dart';
 
 import 'package:newsapp/view/registerscreen/registerscreen.dart';
 import 'package:provider/provider.dart';
@@ -41,38 +41,9 @@ class LoginScreen extends StatelessWidget {
                     key: formKey,
                     child: Column(
                       children: [
-                        TextFormField(
-                          controller: emailController,
-                          decoration: InputDecoration(
-                            labelText: 'Email',
-                            hintText: ("Your email address"),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide:
-                                    BorderSide(color: Colors.grey, width: 3)),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide:
-                                    BorderSide(color: Colors.blue, width: 3)),
-                          ),
-                        ),
+                        emailtextfield(),
                         SizedBox(height: 20),
-                        TextFormField(
-                          controller: passwordController,
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            hintText: ("Your Password"),
-                            suffix: Icon(Icons.remove_red_eye),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide:
-                                    BorderSide(color: Colors.grey, width: 3)),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide:
-                                    BorderSide(color: Colors.blue, width: 3)),
-                          ),
-                        ),
+                        passwordtextfield(),
                       ],
                     ),
                   ),
@@ -82,54 +53,129 @@ class LoginScreen extends StatelessWidget {
                     width: double.infinity,
                     child: context.watch<LoginscreenController>().isloading
                         ? Center(child: CircularProgressIndicator())
-                        : ElevatedButton(
-                            onPressed: () {
-                              context.read<LoginscreenController>().onLogin(
-                                  emailAddress: emailController.text,
-                                  Passsword: passwordController.text,
-                                  context: context);
-                              // Add login logic here
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => BottomnavbarScreen(),
-                                  ));
-                            },
-                            style: ButtonStyle(
-                                backgroundColor:
-                                    WidgetStatePropertyAll(Colors.blue)),
-                            child: Text(
-                              "sign in",
-                            ),
-                          ),
+                        : elevatedbutton(context),
                   ),
                   SizedBox(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Don't have an account?",
-                          style: TextStyle(fontSize: 20)),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Signupscreen(),
-                                ));
-                          },
-                          child: Text(
-                            "Register",
-                            style: TextStyle(color: Colors.blue),
-                          ))
-                    ],
-                  )
+                  registration(context),
+                  SizedBox(height: 30),
+                  Divider(
+                    color: Colors.black,
+                  ),
+                  SizedBox(height: 10),
+                  conditions(),
                 ],
               ),
             ),
           );
         });
+  }
+
+  Row conditions() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        InkWell(
+          onTap: () {},
+          child: Text("Conditions of use",
+              style: TextStyle(
+                color: Colors.blue,
+              )),
+        ),
+        SizedBox(width: 15),
+        InkWell(
+          onTap: () {},
+          child: Text("Privacy Notice",
+              style: TextStyle(
+                color: Colors.blue,
+              )),
+        ),
+        SizedBox(width: 15),
+        InkWell(
+          onTap: () {},
+          child: Text("Help",
+              style: TextStyle(
+                color: Colors.blue,
+              )),
+        ),
+      ],
+    );
+  }
+
+  Row registration(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Don't have an account?", style: TextStyle(fontSize: 20)),
+        SizedBox(
+          width: 10,
+        ),
+        TextButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Signupscreen(),
+                  ));
+            },
+            child: Text(
+              "Register",
+              style: TextStyle(color: Colors.blue),
+            ))
+      ],
+    );
+  }
+
+  ElevatedButton elevatedbutton(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        context.read<LoginscreenController>().onLogin(
+            emailAddress: emailController.text,
+            Passsword: passwordController.text,
+            context: context);
+        // Add login logic here
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProfileEditscreen(),
+            ));
+      },
+      style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.blue)),
+      child: Text(
+        "sign in",
+      ),
+    );
+  }
+
+  TextFormField passwordtextfield() {
+    return TextFormField(
+      controller: passwordController,
+      decoration: InputDecoration(
+        labelText: 'Password',
+        hintText: ("Your Password"),
+        suffix: Icon(Icons.remove_red_eye),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: Colors.grey, width: 3)),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: Colors.blue, width: 3)),
+      ),
+    );
+  }
+
+  TextFormField emailtextfield() {
+    return TextFormField(
+      controller: emailController,
+      decoration: InputDecoration(
+        labelText: 'Email',
+        hintText: ("Your email address"),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: Colors.grey, width: 3)),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: Colors.blue, width: 3)),
+      ),
+    );
   }
 }
