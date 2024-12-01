@@ -69,7 +69,7 @@ class ProfileEditscreen extends StatelessWidget {
   TextFormField phonetextfield(TextEditingController phonenoController) {
     return TextFormField(
       controller: phonenoController,
-      style: TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.blue),
       decoration: InputDecoration(
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -103,7 +103,7 @@ class ProfileEditscreen extends StatelessWidget {
   TextFormField agetextfield(TextEditingController ageController) {
     return TextFormField(
       controller: ageController,
-      style: TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.blue),
       decoration: InputDecoration(
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -137,7 +137,7 @@ class ProfileEditscreen extends StatelessWidget {
   TextFormField addresstextfield(TextEditingController addressController) {
     return TextFormField(
       controller: addressController,
-      style: TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.blue),
       decoration: InputDecoration(
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -169,7 +169,7 @@ class ProfileEditscreen extends StatelessWidget {
   TextFormField nametextfield(TextEditingController NameController) {
     return TextFormField(
       controller: NameController,
-      style: TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.blue),
       decoration: InputDecoration(
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
