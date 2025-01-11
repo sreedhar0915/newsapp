@@ -569,6 +569,7 @@ class _HomescreenState extends State<Homescreen> {
 
   TabBar tabbar(BuildContext context) {
     return TabBar(
+      tabAlignment: TabAlignment.start,
       indicatorSize: TabBarIndicatorSize.tab,
       labelColor: Colors.white,
       labelStyle: TextStyle(fontSize: 12),
